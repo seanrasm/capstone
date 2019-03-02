@@ -93,7 +93,7 @@
     line-height:2.5rem;
     letter-spacing:.8rem;
     background:-webkit-linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,0));
-    -webkit-text-fill-color:transparent;
+    -webkit-text-fill-color: #fffcfc69;
     -webkit-background-clip:text
 }
 .masthead h2{
@@ -256,4 +256,8 @@ a:focus,a:hover{
 }
 footer{
     padding:5rem 0
+}
+
+img.img-fluid.mb-3.mb-lg-0 {
+    height: 600px;
 }
