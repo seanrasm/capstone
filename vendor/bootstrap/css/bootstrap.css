@@ -2333,8 +2333,11 @@ textarea.form-control {
   }
   .form-inline .form-control {
     display: inline-block;
-    width: auto;
+    /* width: auto; */
+    width: -webkit-fill-available;
     vertical-align: middle;
+    margin-top: 10px;
+
   }
   .form-inline .form-control-plaintext {
     display: inline-block;

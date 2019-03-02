@@ -93,7 +93,7 @@
     line-height:2.5rem;
     letter-spacing:.8rem;
     background:-webkit-linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,0));
-    -webkit-text-fill-color: #fffcfc69;
+    -webkit-text-fill-color: #fffcfcad;
     -webkit-background-clip:text
 }
 .masthead h2{
