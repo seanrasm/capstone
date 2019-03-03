@@ -23,6 +23,14 @@
   <!-- Custom styles for this template -->
   <link href="../css/grayscale.min.css" rel="stylesheet">
 
+  <!-- Tester scriopt to grab input data for URI -->
+
+  <script language="JavaScript">
+      function form_input_var() {
+        var city_input_value = document.getElementById('cityInput').value;
+        var pd_input_value = document.getElementById('perDiem').value;
+      }
+  </script>
 </head>
 
 <body id="page-top">
@@ -62,9 +70,9 @@
 
           <h2 class="text-white mb-5">What do you want to Stack?</h2>
 
-          <form class="form-inline d-flex">
+          <form name="stacks_form" action="./stacks.html" onsubmit="return form_input_var();" method="GET" class="form-inline d-flex">
             <label for="cityInput" class="text-white">City</label>
-            <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="cityInput" placeholder="Enter a city...">
+            <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="cityInput" placeholder="Enter a city..." required>
             <label for="perDiem" class="text-white">Per Diem Per Day</label>
             <input type="number" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="perDiem" placeholder="Enter your daily per diem...">
             <label class="text-white" for="tripStartDate">Start Date</label>
@@ -73,7 +81,6 @@
             <input type="date" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="tripEndate" placeholder="Your trip is ending...">
             <button type="submit" class="btn btn-primary mx-auto">Stacks</button>
           </form>
-
         </div>
       </div>
     </div>
@@ -82,6 +89,7 @@
   <!-- Contact Section -->
   <section class="contact-section bg-black">
     <div class="container">
+      
 
       <div class="row">
 

@@ -8,21 +8,19 @@
       <link rel="icon" href="../img/favicon.ico">
     <title>Time Stacks | List</title>
     <link rel="stylesheet" href="../css/c07.css" />
-
-<script>
-    (function() {
-      var cx = '123:456'; // Insert your own Custom Search engine ID here
-      var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
-      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
-    })();
+    <script lang="JavaScript">
+      function show_init_values() {
+        document.getElementById('display').innerHTML = 
+          city_input_value;
+      }
     </script>
   
   </head>
-  <gcse:search></gcse:search>
+
   <div id="map"></div>
     <div id="page">
-        
+      <div id="display"></div>
+
       <div class="container mv-down">
       <h2 class="mv-down">Stacks <span id="counter"></span></h2>
       <ul>
@@ -41,7 +39,7 @@
     <script src="../js/jquery-1.11.0.js"></script>
     <script src="../js/example.js"></script>
     
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8utdVuCt7_XrGfmmQqAolAfZdvevwBgk&libraries=places&callback=initMap" async defer></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8utdVuCt7_XrGfmmQqAolAfZdvevwBgk&libraries=places&callback=initMap" async defer></script> -->
 
 
   </body>
