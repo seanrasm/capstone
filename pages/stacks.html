@@ -53,8 +53,7 @@
 
 <script>
 
-//alert(findGetParameter("input1"))
-
+//Pull the input provided from the "input_form.html" page from the GET request
 function findGetParameter(parameterName) {
     var result = null,
         tmp = [];
@@ -67,87 +66,16 @@ function findGetParameter(parameterName) {
         });
     return result;
 }
-
+//Cache the input
 input = findGetParameter("city_input");
-        
+        //This is the callback function that I'm using with the script connecting to google
         function search() {
           var sydney = new google.maps.LatLng(-33.867, 151.195);
           var map;
           var service;
           var infowindow;
-          
-          map = new google.maps.Map(
-              document.getElementById('map_dos'), {center: sydney, zoom: 15});
-              var request = {
-                query: input + " Hotels",
-                fields: ['name'],
-                };
-                  service = new google.maps.places.PlacesService(map);
-                  service.findPlaceFromQuery(request, function(results, status) {
-                  if (status === google.maps.places.PlacesServiceStatus.OK) {
-                      for (var i = 0; i < results.length; i++) {
-                      console.log(results[i]);
-
-                      var li = document.createElement("li");
-                      var text = document.createTextNode("Hotel: " + results[i].name);
-                      li.appendChild(text);
-                      document.getElementById("js_push").appendChild(li);
-
-                      li.id = "one";
-                      li.className = "hot li-class";
-                      }
-                      }
-            });
-
-          // Food API call
-          map = new google.maps.Map(
-            document.getElementById('map_dos'), {center: sydney, zoom: 15});
-            var request = {
-              query: input + " Restaurants",
-              fields: ['name'],
-              };
-                service = new google.maps.places.PlacesService(map);
-                service.findPlaceFromQuery(request, function(results, status) {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    for (var i = 0; i < results.length; i++) {
-                    console.log(results[i]);
-
-                    var li = document.createElement("li");
-                    var text = document.createTextNode("Food: " + results[i].name);
-                    li.appendChild(text);
-                    document.getElementById("js_push").appendChild(li);
-
-                    li.id = "two";
-                    li.className = "hot li-class";
-                    }
-                    }
-          });
-
-          //Fun API call
-          map = new google.maps.Map(
-            document.getElementById('map_dos'), {center: sydney, zoom: 15});
-            var request = {
-              query: input + " Fun",
-              fields: ['name'],
-              };
-                service = new google.maps.places.PlacesService(map);
-                service.findPlaceFromQuery(request, function(results, status) {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    for (var i = 0; i < results.length; i++) {
-                    console.log(results[i]);
-
-                    var li = document.createElement("li");
-                    var text = document.createTextNode("Fun: " + results[i].name);
-                    li.appendChild(text);
-                    document.getElementById("js_push").appendChild(li);
-
-                    li.id = "three";
-                    li.className = "hot li-class";
-                    }
-                    }
-            });
-
-            //Night Life
+        
+            //Night Life API call
             map = new google.maps.Map(
             document.getElementById('map_dos'), {center: sydney, zoom: 15});
             var request = {
@@ -171,7 +99,77 @@ input = findGetParameter("city_input");
                     }
             });
 
-            
+            //Fun API call
+            map = new google.maps.Map(
+              document.getElementById('map_dos'), {center: sydney, zoom: 15});
+              var request = {
+                query: input + " Fun",
+                fields: ['name'],
+                };
+                  service = new google.maps.places.PlacesService(map);
+                  service.findPlaceFromQuery(request, function(results, status) {
+                  if (status === google.maps.places.PlacesServiceStatus.OK) {
+                      for (var i = 0; i < results.length; i++) {
+                      console.log(results[i]);
+
+                      var li = document.createElement("li");
+                      var text = document.createTextNode("Fun: " + results[i].name);
+                      li.appendChild(text);
+                      document.getElementById("js_push").appendChild(li);
+
+                      li.id = "three";
+                      li.className = "hot li-class";
+                      }
+                      }
+              });
+
+            // Food API call
+            map = new google.maps.Map(
+              document.getElementById('map_dos'), {center: sydney, zoom: 15});
+              var request = {
+                query: input + " Restaurants",
+                fields: ['name'],
+                };
+                  service = new google.maps.places.PlacesService(map);
+                  service.findPlaceFromQuery(request, function(results, status) {
+                  if (status === google.maps.places.PlacesServiceStatus.OK) {
+                      for (var i = 0; i < results.length; i++) {
+                      console.log(results[i]);
+
+                      var li = document.createElement("li");
+                      var text = document.createTextNode("Food: " + results[i].name);
+                      li.appendChild(text);
+                      document.getElementById("js_push").appendChild(li);
+
+                      li.id = "two";
+                      li.className = "hot li-class";
+                      }
+                      }
+            });
+
+            //Find hotel for the desired City
+            map = new google.maps.Map(
+              document.getElementById('map_dos'), {center: sydney, zoom: 15});
+              var request = {
+                query: input + " Hotels",
+                fields: ['name'],
+                };
+                  service = new google.maps.places.PlacesService(map);
+                  service.findPlaceFromQuery(request, function(results, status) {
+                  if (status === google.maps.places.PlacesServiceStatus.OK) {
+                      for (var i = 0; i < results.length; i++) {
+                      console.log(results[i]);
+
+                      var li = document.createElement("li");
+                      var text = document.createTextNode("Hotel: " + results[i].name);
+                      li.appendChild(text);
+                      document.getElementById("js_push").appendChild(li);
+
+                      li.id = "one";
+                      li.className = "hot li-class";
+                      }
+                      }
+            });
 
         } 
 
@@ -198,7 +196,7 @@ input = findGetParameter("city_input");
 
 
 
-    <!--Script tag that is calling google's API-->
+    <!--Script tag that is calling google's API (see callback function "search()") above-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8utdVuCt7_XrGfmmQqAolAfZdvevwBgk&libraries=places&callback=search" async defer></script>
       
     <script src="../js/jquery-1.11.0.js"></script>
