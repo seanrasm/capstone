@@ -1,20 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8' />
-  </head>
-  <body>
-    <!-- when the form is submitted, either with submit button or ENTER key, call search() -->
-<form onsubmit="return search()">
-    <input type="text" id="query">
-    <input type="submit"></input>
-</form>
-<!-- show the results in this DIV -->
-<div id="results"></div>
-
-
-<!--
-<script>
 function search() {
     const cx = '000103450533375697339:mn56sqv3ops' // your search engine id 
     const apikey = 'AIzaSyA8utdVuCt7_XrGfmmQqAolAfZdvevwBgk' // your api key
@@ -40,6 +23,3 @@ function search() {
     /* make sure the form isn't actually submitted by returning false */
     return false 
 }
-</script> -->
-  </body>
-</html>

@@ -25,12 +25,10 @@
 
   <!-- Tester scriopt to grab input data for URI -->
 
-  <script language="JavaScript">
-      function form_input_var() {
-        var city_input_value = document.getElementById('cityInput').value;
-        var pd_input_value = document.getElementById('perDiem').value;
-      }
-  </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/testjquery.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8utdVuCt7_XrGfmmQqAolAfZdvevwBgk&libraries=places"></script>
+
 </head>
 
 <body id="page-top">
@@ -62,6 +60,8 @@
     </div>
   </nav>
 
+
+
   <!-- Stacks Section -->
   <section id="stacks" class="signup-section">
     <div class="container">
@@ -70,7 +70,7 @@
 
           <h2 class="text-white mb-5">What do you want to Stack?</h2>
 
-          <form name="stacks_form" action="./stacks.html" onsubmit="return form_input_var();" method="GET" class="form-inline d-flex">
+          <form onsubmit="return search();" name="stacks_form" method="GET" class="form-inline d-flex">
             <label for="cityInput" class="text-white">City</label>
             <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="cityInput" placeholder="Enter a city..." required>
             <label for="perDiem" class="text-white">Per Diem Per Day</label>
@@ -85,6 +85,43 @@
       </div>
     </div>
   </section>
+
+  <!--Displaying the list on the page-->
+  <div id="results" class="text-uppercase m-0"></div>
+
+  <!--Script to pull in Google Results-->
+  <script>
+
+      function search() {
+        const cx = '000103450533375697339:mn56sqv3ops' // your search engine id 
+        const apikey = 'AIzaSyA8utdVuCt7_XrGfmmQqAolAfZdvevwBgk' // your api key
+    
+        /* select the input element */
+        let input = document.getElementById('cityInput')
+
+        var saveOldFetchURL = `https://www.googleapis.com/customsearch/v1?key=${apikey}&cx=${cx}&q=${input.value}`;
+    
+        /* fetch the following URL that includes apikey, cx and the value of input */
+        var testFind = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${input.value}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyA8utdVuCt7_XrGfmmQqAolAfZdvevwBgk`;  
+        fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${input.value}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyA8utdVuCt7_XrGfmmQqAolAfZdvevwBgk`).then(response => response.text()).then(text => {
+            let result = JSON.parse(text)
+            result.items.forEach(item => {
+                /* add it to your results div */
+                // item.link, item.title, ...etc
+            
+                console.log(item.name);
+    
+                var li = document.createElement("li");
+                var text = document.createTextNode(item.title);
+                li.appendChild(text);
+                document.getElementById("results").appendChild(li);
+            })
+        })
+        /* make sure the form isn't actually submitted by returning false */
+        return false 
+    }
+    
+    </script>
 
   <!-- Contact Section -->
   <section class="contact-section bg-black">

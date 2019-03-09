@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place Searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!--<div id="map"></div>-->
+    <script>
+        
+        function search() {
+          var sydney = new google.maps.LatLng(-33.867, 151.195);
+          var map;
+          var service;
+          var infowindow;
+          
+          //Test section
+          var input = document.getElementById('testq');
+          var testdisplay = document.createElement("li");
+          var listtest = document.createTextNode(input.value);
+          testdisplay.appendChild(listtest);
+          
+          
+          map = new google.maps.Map(
+          document.getElementById('map_dos'), {center: sydney, zoom: 15});
+          var request = {
+                  query: input.value,
+                  fields: ['name'],
+                  };
+          service = new google.maps.places.PlacesService(map);
+          service.findPlaceFromQuery(request, function(results, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+              for (var i = 0; i < results.length; i++) {
+              console.log(results[i]);
+
+              var li = document.createElement("li");
+              var text = document.createTextNode(results[i].name);
+              li.appendChild(text);
+              document.getElementById("results").appendChild(li);
+              }
+
+              //  map.setCenter(results[0].geometry.location);
+              }
+              });
+          } 
+
+  </script>
+    <form action="get_test.html" method="get">
+            <input type="text" name='input1'>
+            <input type="submit" name="submit"></input>
+        </form>
+
+        <form action="get_test.html" method="get" name="form1" id="form1">
+            <input type="text" name="field1">
+            <input type="submit" name="submit">
+        </form>
+        
+        <!-- show the results in this DIV -->
+        <div id="results"></div>
+        <div id="map_dos"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8utdVuCt7_XrGfmmQqAolAfZdvevwBgk&libraries=places&callback=search" async defer></script>
+  </body>
+</html>
