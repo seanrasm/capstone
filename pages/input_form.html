@@ -10,7 +10,7 @@
   <link rel="icon" href="../img/favicon.ico">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-  <title>Time Stacks</title>
+  <title>Time Stacks | Create</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -55,6 +55,9 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="../index.html#signup">Subscribe</a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../pages/input_form.html">Stacks</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -70,16 +73,16 @@
 
           <h2 class="text-white mb-5">What do you want to Stack?</h2>
 
-          <form onsubmit="return search();" name="stacks_form" method="GET" class="form-inline d-flex">
-            <label for="cityInput" class="text-white">City</label>
-            <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="cityInput" placeholder="Enter a city..." required>
+          <form action="stacks.html" name="stacks_form" method="GET" class="form-inline d-flex">
+            <label for="city" class="text-white">City</label>
+            <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="city_input" placeholder="Enter a city..." required>
             <label for="perDiem" class="text-white">Per Diem Per Day</label>
             <input type="number" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="perDiem" placeholder="Enter your daily per diem...">
             <label class="text-white" for="tripStartDate">Start Date</label>
             <input type="date" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="tripStartDate">
             <label class="text-white" for="tripEndDate">End Date</label>
             <input type="date" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="tripEndate" placeholder="Your trip is ending...">
-            <button type="submit" class="btn btn-primary mx-auto">Stacks</button>
+            <button type="submit" class="btn btn-primary mx-auto" name="submit">Stacks</button>
           </form>
         </div>
       </div>
@@ -120,6 +123,9 @@
         /* make sure the form isn't actually submitted by returning false */
         return false 
     }
+
+
+
     
     </script>
 

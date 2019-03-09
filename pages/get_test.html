@@ -33,7 +33,7 @@ function findGetParameter(parameterName) {
     return result;
 }
 
-input = findGetParameter("input1");
+input = findGetParameter("field1");
         
         function search() {
           var sydney = new google.maps.LatLng(-33.867, 151.195);
@@ -62,6 +62,53 @@ input = findGetParameter("input1");
               //  map.setCenter(results[0].geometry.location);
               }
               });
+
+              map = new google.maps.Map(
+                document.getElementById('map_dos'), {center: sydney, zoom: 15});
+                var request = {
+                  query: input + " Restaurants",
+                  fields: ['name'],
+                  };
+                    service = new google.maps.places.PlacesService(map);
+                    service.findPlaceFromQuery(request, function(results, status) {
+                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                        for (var i = 0; i < results.length; i++) {
+                        console.log(results[i]);
+
+                        var li = document.createElement("li");
+                        var text = document.createTextNode(results[i].name);
+                        li.appendChild(text);
+                        document.getElementById("results").appendChild(li);
+
+                        li.id = "one";
+                        li.className = "hot";
+                        }
+                        }
+              });
+
+              map = new google.maps.Map(
+                document.getElementById('map_dos'), {center: sydney, zoom: 15});
+                var request = {
+                  query: input + " Amusement Parks",
+                  fields: ['name'],
+                  };
+                    service = new google.maps.places.PlacesService(map);
+                    service.findPlaceFromQuery(request, function(results, status) {
+                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                        for (var i = 0; i < results.length; i++) {
+                        console.log(results[i]);
+
+                        var li = document.createElement("li");
+                        var text = document.createTextNode(results[i].name);
+                        li.appendChild(text);
+                        document.getElementById("results").appendChild(li);
+
+                        li.id = "one";
+                        li.className = "hot";
+                        }
+                        }
+              });
+
           } 
 
   </script>

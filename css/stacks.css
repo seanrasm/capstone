@@ -28,6 +28,11 @@ h1 {
   margin: 0 auto 0 auto;
   padding: 30px 10px 20px 10px;}
 
+h2.mv-down {
+  margin-bottom: 10%;
+  margin-top: 40px;
+}
+
 h2 {
   color: #fff;
   font-size: 24px;
@@ -52,17 +57,17 @@ h2 span {
   width: 26px;
   padding: 4px 0 0 0;}
 
-ul {
+.ul-class {
   border:none;
   padding: 0;
   margin: 0;}
 
-li {
+.li-class {
   background-color: #ec8b68;
   color: #fff;
   border-top: 1px solid #fe9772;
   border-bottom: 1px solid #9f593f;
-  font-size: 24px;
+  font-size: 18px;
   letter-spacing: .05em;
   list-style-type: none;
   text-shadow: 2px 2px 1px #9f593f;
@@ -71,7 +76,7 @@ li {
   padding-left: 1em;
   padding-top: 10px;}
 
-li a {
+.li-class a {
   color: #fff;
   background-image: url('../images/icon-link.png');
   background-position: right, center;
@@ -79,7 +84,11 @@ li a {
   text-decoration: none;
   padding-right: 36px;}
 
-li.complete a {
+.test {
+  background: #6cc0ac
+}
+
+.li-class .complete a {
   background-image: none;}
 
 p {
@@ -97,7 +106,10 @@ p {
   color: #fff;
   text-shadow: 2px 2px 1px #914141;
   border-top: 1px solid #e99295;
-  border-bottom: 1px solid #914141;}
+  border-bottom: 1px solid #914141;
+  padding-bottom: 11%;
+  padding-top: 4%;
+}
 
 .cool {
   background-color: #6cc0ac;
@@ -107,14 +119,18 @@ p {
   border-bottom: 1px solid #3b6a5e;}
 
 .complete {
-  background-color: #999;
+  background-color: grey;
   color: #fff;
-  background-image: url("../images/icon-trash.png");
-  background-position: right, center;
-  background-repeat: no-repeat;
-  border-top: 1px solid #666;
-  border-bottom: 1px solid #b0b0b0;
-  text-shadow: 2px 2px 1px #333;}
+  border-top: 1px solid #fe9772;
+  border-bottom: 1px solid #9f593f;
+  font-size: 18px;
+  letter-spacing: .05em;
+  list-style-type: none;
+  text-shadow: 2px 2px 1px #9f593f;
+  text-align: left;
+  height: 50px;
+  padding-left: 1em;
+  padding-top: 10px;}
 
 .complete a {display:block;}
 

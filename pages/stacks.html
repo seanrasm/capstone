@@ -7,40 +7,204 @@
       <meta name="author" content="Sean Henry">
       <link rel="icon" href="../img/favicon.ico">
     <title>Time Stacks | List</title>
-    <link rel="stylesheet" href="../css/c07.css" />
-    <script lang="JavaScript">
-      function show_init_values() {
-        document.getElementById('display').innerHTML = 
-          city_input_value;
-      }
-    </script>
-  
+    <link rel="stylesheet" href="../css/stacks.css" /> 
+      <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../css/grayscale.min.css" rel="stylesheet">
   </head>
   <body>
 
-  <div id="map"></div>
+     <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="../index.html">Time Stacks</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../index.html#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../index.html#food">Food</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../index.html#fun">Fun</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../index.html#signup">Subscribe</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="../pages/input_form.html">Stacks</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+<script>
+
+//alert(findGetParameter("input1"))
+
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+
+input = findGetParameter("city_input");
+        
+        function search() {
+          var sydney = new google.maps.LatLng(-33.867, 151.195);
+          var map;
+          var service;
+          var infowindow;
+          
+          map = new google.maps.Map(
+              document.getElementById('map_dos'), {center: sydney, zoom: 15});
+              var request = {
+                query: input + " Hotels",
+                fields: ['name'],
+                };
+                  service = new google.maps.places.PlacesService(map);
+                  service.findPlaceFromQuery(request, function(results, status) {
+                  if (status === google.maps.places.PlacesServiceStatus.OK) {
+                      for (var i = 0; i < results.length; i++) {
+                      console.log(results[i]);
+
+                      var li = document.createElement("li");
+                      var text = document.createTextNode("Hotel: " + results[i].name);
+                      li.appendChild(text);
+                      document.getElementById("js_push").appendChild(li);
+
+                      li.id = "one";
+                      li.className = "hot li-class";
+                      }
+                      }
+            });
+
+          // Food API call
+          map = new google.maps.Map(
+            document.getElementById('map_dos'), {center: sydney, zoom: 15});
+            var request = {
+              query: input + " Restaurants",
+              fields: ['name'],
+              };
+                service = new google.maps.places.PlacesService(map);
+                service.findPlaceFromQuery(request, function(results, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                    console.log(results[i]);
+
+                    var li = document.createElement("li");
+                    var text = document.createTextNode("Food: " + results[i].name);
+                    li.appendChild(text);
+                    document.getElementById("js_push").appendChild(li);
+
+                    li.id = "two";
+                    li.className = "hot li-class";
+                    }
+                    }
+          });
+
+          //Fun API call
+          map = new google.maps.Map(
+            document.getElementById('map_dos'), {center: sydney, zoom: 15});
+            var request = {
+              query: input + " Fun",
+              fields: ['name'],
+              };
+                service = new google.maps.places.PlacesService(map);
+                service.findPlaceFromQuery(request, function(results, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                    console.log(results[i]);
+
+                    var li = document.createElement("li");
+                    var text = document.createTextNode("Fun: " + results[i].name);
+                    li.appendChild(text);
+                    document.getElementById("js_push").appendChild(li);
+
+                    li.id = "three";
+                    li.className = "hot li-class";
+                    }
+                    }
+            });
+
+            //Night Life
+            map = new google.maps.Map(
+            document.getElementById('map_dos'), {center: sydney, zoom: 15});
+            var request = {
+              query: input + " Night Clubs",
+              fields: ['name'],
+              };
+                service = new google.maps.places.PlacesService(map);
+                service.findPlaceFromQuery(request, function(results, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                    console.log(results[i]);
+
+                    var li = document.createElement("li");
+                    var text = document.createTextNode("Night Life: " + results[i].name);
+                    li.appendChild(text);
+                    document.getElementById("js_push").appendChild(li);
+
+                    li.id = "four";
+                    li.className = "hot li-class";
+                    }
+                    }
+            });
+
+            
+
+        } 
+
+  </script>
+
     <div id="page">
       <div id="display"></div>
 
       <div class="container mv-down">
-      <h2 class="mv-down">Stacks <span id="counter"></span></h2>
-      <ul>
-        <li id="one" class="hot">Hotel</li>
-        <li id="two" class="hot">Food</li>
-        <li id="three" class="hot">Fun</li>
-        <li id="three" class="hot">Price</li>
+      <h2 class="mv-down text-white">Stacks</span></h2>
+      <ul id="js_push" class="ul-class">
+       
       </ul>
       <div id="newItemButton"><button href="#" id="showForm">new item</button></div>
       <form id="newItemForm">
-        <input type="text" id="itemDescription" placeholder="Add description" />
+        <input type="text" id="itemDescription" placeholder="Add Item" />
         <input type="submit" id="add" value="add" />
       </form>
     </div>
     </div>
+            <!-- show the results in this DIV -->
+            <div id="results"></div>
+            <div id="map_dos"></div>
+
+
+
+    <!--Script tag that is calling google's API-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8utdVuCt7_XrGfmmQqAolAfZdvevwBgk&libraries=places&callback=search" async defer></script>
+      
     <script src="../js/jquery-1.11.0.js"></script>
-    <script src="../js/example.js"></script>
+    <script src="../js/listworks.js"></script>
     
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8utdVuCt7_XrGfmmQqAolAfZdvevwBgk&libraries=places&callback=initMap" async defer></script> -->
+  
 
 
   </body>

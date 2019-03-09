@@ -3,11 +3,11 @@ $(function() {
     // SETUP
     var $list, $newItemForm, $newItemButton;
     var item = '';                                 // item is an empty string
-    $list = $('ul');                               // Cache the unordered list
+    $list = $('#js_push');                         // Cache the unordered list
     $newItemForm = $('#newItemForm');              // Cache form to add new items
     $newItemButton = $('#newItemButton');          // Cache button to show form
   
-    $('li').hide().each(function(index) {          // Hide list items
+    $('li-class').hide().each(function(index) {          // Hide list items
       $(this).delay(450 * index).fadeIn(1600);     // Then fade them in
     });
   
@@ -30,10 +30,19 @@ $(function() {
     $newItemForm.on('submit', function(e) {       // When a new item is submitted
       e.preventDefault();                         // Prevent form being submitted
       var text = $('input:text').val();           // Get value of text input
-      $list.append('<li>' + text + '</li>');      // Add item to end of the list
+      text = encodeITEM(text);
+      $list.append('<li class="hot li-class">' + text + '</li>');      // Add item to end of the list
       $('input:text').val('');                    // Empty the text input
       updateCount();                              // Update the count
     });
+
+    //Function to sanitize data from the stacks input form on this page
+    function encodeITEM(s) {
+      if (s==='') return '_';
+      return s.replace(/[<>]/g, function(match) {
+          return '_'+match[0].charCodeAt(0).toString(16)+'_';
+      });
+  }
   
     // CLICK HANDLING - USES DELEGATION ON <ul> ELEMENT
     $list.on('click', 'li', function() {
